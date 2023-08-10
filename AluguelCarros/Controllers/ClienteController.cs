@@ -60,5 +60,14 @@ namespace AluguelCarros.Controllers
             return Ok(clienteDTO);
         }
 
+        [HttpGet]
+        public IActionResult GetClientes()
+        {
+            return Ok(_context.Clientes.ToList());
+
+        }
+
+
+
     }
 }
