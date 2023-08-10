@@ -1,4 +1,18 @@
+using AluguelCarros.Data;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+// add services to the access database
+var connectionString = builder.Configuration.GetConnectionString("AluguelConnection");
+builder.Services.AddDbContext<AluguelContext>(opts => opts
+    .UseSqlServer(connectionString));
+
+
+builder.Services
+    .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Add services to the container.
 
