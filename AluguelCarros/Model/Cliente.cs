@@ -13,17 +13,23 @@ namespace AluguelCarros.Model
         [Required]
         public string Sobrenome { get; set; }
         [Required]
+        public DateTime DtNascimento { get; set; }
         public bool Ativo { get; set; }
         [Required]
         public string CPF { get; set; }
+        [Required]
+        public int CNH { get; set; }
         [Required] 
         public string Email { get; set; }
         [Required]
         public string Telefone { get; set; }
+        public DateTime DtCadastro { get; set; }
+
 
         public Cliente()
         {
             Ativo = false;
+            DtCadastro = DateTime.Now;
         }
 
     }

@@ -8,9 +8,7 @@ namespace AluguelCarros.Data.Dtos
         public string Nome { get; set; }
         [Required]
         public string Sobrenome { get; set; }
-        [Required]
-        public bool Ativo { get; set; }
-        [Required]
+        [Required]      
         public string CPF { get; set; }
         [Required]
         public string Email { get; set; }

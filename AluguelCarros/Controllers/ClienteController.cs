@@ -46,7 +46,7 @@ namespace AluguelCarros.Controllers
             var cliente = _context.Clientes.FirstOrDefault(
             cliente => cliente.CPF == cpf);
             if (cliente == null) return NotFound();
-            _context.Remove(cliente);
+            _context.Update(cliente.Ativo == true);
             _context.SaveChanges();
             return NoContent();
         }
@@ -54,7 +54,7 @@ namespace AluguelCarros.Controllers
         [HttpGet("{cpf}")]
         public IActionResult GetClienteCPF(string cpf)
         {
-            var cliente = _context.Clientes.FirstOrDefault(cliente => cliente.CPF == cpf);
+            var cliente = _context.Clientes.Where(c=>c.Ativo==false).FirstOrDefault(cliente => cliente.CPF == cpf);
             if (cliente == null) return NotFound();
             ReadClienteDTO clienteDTO = _mapper.Map<ReadClienteDTO>(cliente);
             return Ok(clienteDTO);
@@ -63,7 +63,7 @@ namespace AluguelCarros.Controllers
         [HttpGet]
         public IActionResult GetClientes()
         {
-            return Ok(_context.Clientes.ToList());
+            return Ok(_context.Clientes.Where(c=>c.Ativo == false).ToList());
 
         }
 

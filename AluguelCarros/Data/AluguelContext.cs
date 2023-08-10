@@ -10,6 +10,18 @@ namespace AluguelCarros.Data
             
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Cliente CPF UNIQUE
+            modelBuilder.Entity<Cliente>().HasIndex(c=> c.CPF).IsUnique();
+
+            //Carro RENAVAM PLACA UNIQUE
+            modelBuilder.Entity<Carro>().HasIndex(c => c.Placa).IsUnique();
+            modelBuilder.Entity<Carro>().HasIndex(c => c.Revanam).IsUnique();
+
+        }
+
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Carro> Carros { get; set; }
     }
 }
