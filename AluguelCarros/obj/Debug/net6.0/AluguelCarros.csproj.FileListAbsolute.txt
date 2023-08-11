@@ -93,3 +93,4 @@ C:\Users\Felipe\source\repos\AluguelCarros\AluguelCarros\bin\Debug\net6.0\System
 C:\Users\Felipe\source\repos\AluguelCarros\AluguelCarros\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Felipe\source\repos\AluguelCarros\AluguelCarros\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\Felipe\source\repos\AluguelCarros\AluguelCarros\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Felipe\source\repos\AluguelCarros\AluguelCarros\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll

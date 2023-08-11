@@ -12,11 +12,11 @@ namespace AluguelCarros.Controllers
     [Route("[controller]")]
     [Consumes("application/json")]
     [Produces("application/json")]
-    public class ClienteController : Controller
+    public class CarroController : Controller
     {
         private AluguelContext _context;
         private IMapper _mapper;
-        public ClienteController(AluguelContext context, IMapper mapper)
+        public CarroController(AluguelContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -24,82 +24,79 @@ namespace AluguelCarros.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [SwaggerOperation(Summary = "Metodo resposavel por cadastrar um cliente")]
+        [SwaggerOperation(Summary = "Metodo resposavel por cadastrar um Veiculo")]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
-        public IActionResult Cadastrar([FromBody] CreateClienteDTO clienteDTO)
+        public IActionResult Cadastrar([FromBody] CreateCarroDTO carroDTO)
         {
-            Cliente cliente = _mapper.Map<Cliente>(clienteDTO);
-            _context.Clientes.Add(cliente);
+            Carro carro = _mapper.Map<Carro>(carroDTO);
+            _context.Carros.Add(carro);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(GetClienteCPF), new {cpf = cliente.CPF }, cliente);
+            return CreatedAtAction(nameof(GetCarroId), new {Id= carro.Id }, carroDTO);
         }
 
-        [HttpPut("{cpf}")]
-        [SwaggerOperation(Summary = "Metodo resposavel por atualizar os dados cliente")]
+        [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Metodo resposavel por atualizar dados de um Veiculo")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
-        public IActionResult Atualizar(string cpf, [FromBody] UpdateClienteDTO clienteDTO)
+        public IActionResult Atualizar(int id, [FromBody] UpdateCarroDTO CarroDTO)
         {
-            var cliente = _context.Clientes.FirstOrDefault(
-            cliente => cliente.CPF == cpf);
-            if (cliente == null) return NotFound();
-            _mapper.Map(clienteDTO, cliente);
-            _context.SaveChanges();
-            return NoContent();
-        }
-
-        [HttpDelete("{cpf}")]
-        [SwaggerOperation(Summary = "Metodo resposavel por excluir um cliente")]
-        [SwaggerResponse(StatusCodes.Status200OK)]
-        [SwaggerResponse(StatusCodes.Status400BadRequest)]
-        [SwaggerResponse(StatusCodes.Status409Conflict)]
-        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
-        [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
-        public IActionResult Deletar(string cpf)
-        {
-            var cliente = _context.Clientes.FirstOrDefault(
-            cliente => cliente.CPF == cpf);
-            if (cliente == null) return NotFound();
-            _context.Update(cliente.Ativo == true);
+            var Carro = _context.Carros.FirstOrDefault(
+            Carro => Carro.Id == id);
+            if (Carro == null) return NotFound();
+            _mapper.Map(CarroDTO, Carro);
             _context.SaveChanges();
             return NoContent();
         }
 
-        [HttpGet("{cpf}")]
-        [SwaggerOperation(Summary = "Metodo resposavel por consultar um cliente pelo CPF")]
+        [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Metodo resposavel por excluir um veiculo")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
-        public IActionResult GetClienteCPF(string cpf)
+        public IActionResult Deletar(int id)
         {
-            var cliente = _context.Clientes.Where(c=>c.Ativo==false).FirstOrDefault(cliente => cliente.CPF == cpf);
-            if (cliente == null) return NotFound();
-            ReadClienteDTO clienteDTO = _mapper.Map<ReadClienteDTO>(cliente);
-            return Ok(clienteDTO);
+            var Carro = _context.Carros.FirstOrDefault(
+            Carro => Carro.Id == id);
+            if (Carro == null) return NotFound();
+            _context.Update(Carro.Ativo == true);
+            _context.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Metodo resposavel por consultar um veiculo por ID")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status409Conflict)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
+        public IActionResult GetCarroId(int id)
+        {
+            var Carro = _context.Carros.Where(c=>c.Ativo==false).FirstOrDefault(Carro => Carro.Id == id);
+            if (Carro == null) return NotFound();
+            ReadCarroDTO CarroDTO = _mapper.Map<ReadCarroDTO>(Carro);
+            return Ok(CarroDTO);
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Metodo resposavel para retornar uma lista de Clientes")]
+        [SwaggerOperation(Summary = "Retornar uma Lista de Veiculos")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
-        public IActionResult GetClientes()
+        public IActionResult GetCarros()
         {
-            return Ok(_context.Clientes.Where(c=>c.Ativo == false).ToList());
+            return Ok(_context.Carros.Where(c=>c.Ativo == false).ToList());
 
         }
-
-
-
     }
 }
