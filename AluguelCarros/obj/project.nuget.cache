@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jWJvL19D1jwXk4mq8fijHq1PnKRD68+DtFP4jzzPyOHwz6d4BW6kq7FVGEVsxRSi4zOI2p4cbhhD/7tvoPrFZA==",
+  "dgSpecHash": "pphuTl0HdWNxAAdTGOfn7GzCRB70Zf2qj2R7nBs0mTUL4y4wpDW46Hzyqb+Pwln8moGDgdiUxvaSDk8lcCDUGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Felipe\\source\\repos\\AluguelCarros\\AluguelCarros\\AluguelCarros.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Felipe\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Felipe\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\Felipe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Felipe\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.14\\microsoft.aspnetcore.authentication.jwtbearer.6.0.14.nupkg.sha512",
     "C:\\Users\\Felipe\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.10\\microsoft.aspnetcore.jsonpatch.6.0.10.nupkg.sha512",
     "C:\\Users\\Felipe\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.10\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.10.nupkg.sha512",
     "C:\\Users\\Felipe\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

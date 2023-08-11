@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AluguelCarros",
+    "\\AluguelCarros\\bin",
+    "\\AluguelCarros\\Controllers",
+    "\\AluguelCarros\\Data",
+    "\\AluguelCarros\\Migrations",
+    "\\AluguelCarros\\Model",
+    "\\AluguelCarros\\Profiles",
+    "\\AluguelCarros\\Properties"
+  ],
+  "SelectedNode": "\\AluguelCarros\\Profiles\\AuthenticationProfile.cs",
+  "PreviewInSolutionExplorer": false
+}

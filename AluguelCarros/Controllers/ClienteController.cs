@@ -2,16 +2,20 @@
 using AluguelCarros.Data.Dtos;
 using AluguelCarros.Model;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.ComponentModel;
+using System.Formats.Asn1;
 
 namespace AluguelCarros.Controllers
 {   
     [ApiController]
-
+    [Authorize]
     [Route("[controller]")]
     [Consumes("application/json")]
     [Produces("application/json")]
+    [Tags("Clientes")]
     public class ClienteController : Controller
     {
         private AluguelContext _context;
@@ -26,6 +30,7 @@ namespace AluguelCarros.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [SwaggerOperation(Summary = "Metodo resposavel por cadastrar um cliente")]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
@@ -41,6 +46,7 @@ namespace AluguelCarros.Controllers
         [SwaggerOperation(Summary = "Metodo resposavel por atualizar os dados cliente")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
@@ -58,6 +64,7 @@ namespace AluguelCarros.Controllers
         [SwaggerOperation(Summary = "Metodo resposavel por excluir um cliente")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
@@ -75,6 +82,7 @@ namespace AluguelCarros.Controllers
         [SwaggerOperation(Summary = "Metodo resposavel por consultar um cliente pelo CPF")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
@@ -90,6 +98,7 @@ namespace AluguelCarros.Controllers
         [SwaggerOperation(Summary = "Metodo resposavel para retornar uma lista de Clientes")]
         [SwaggerResponse(StatusCodes.Status200OK)]
         [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status401Unauthorized)]
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
