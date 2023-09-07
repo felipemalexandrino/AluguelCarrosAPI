@@ -20,7 +20,7 @@ namespace AluguelCarros.Services
             Claim[] claims = new Claim[]
             {
                 new Claim("usename",usuario.Login),
-                new Claim("usename",usuario.Password),
+                new Claim("password",usuario.Password),
                 new Claim("id",Ids),
                 new Claim("loginTimestamp",DateTime.UtcNow.ToString())
             };
@@ -31,7 +31,7 @@ namespace AluguelCarros.Services
 
             var token = new JwtSecurityToken
                 (
-                    expires: DateTime.Now.AddMinutes(10),
+                    expires: DateTime.Now.AddMonths(5),
                     claims: claims,
                     signingCredentials:signingCredentials
                 );

@@ -66,6 +66,7 @@ namespace AluguelCarros.Controllers
         [SwaggerResponse(StatusCodes.Status409Conflict)]
         [SwaggerResponse(StatusCodes.Status500InternalServerError)]
         [SwaggerResponse(StatusCodes.Status503ServiceUnavailable)]
+        [Authorize("Admin")]
         public IActionResult Deletar(int id)
         {
             var Carro = _context.Carros.FirstOrDefault(
